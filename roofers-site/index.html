@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leadra for Roofers</title>
+<meta name="description" content="Client acquisition systems for roofing companies. 30 new clients in 90 days or you do not pay. Free 30 day game plan and a 20 page audit of your business before you spend a dollar.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  :root{
+    --bitumen:#15171C; --char:#22262E; --chalk:#4F86F7; --torch:#FF4D00;
+    --paper:#F2EEE6; --kraft:#C89B5E; --ink:#E8E6E1; --ink-dim:#9B978F;
+    --paper-ink:#1B1D22; --paper-dim:#5B584F; --good:#2E9E6B; --bad:#D14836;
+    --disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+    --body:"Barlow",-apple-system,"Segoe UI",Helvetica,sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Consolas,monospace;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bitumen);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* asphalt granule noise on dark */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+  h1,h2,h3{font-family:var(--disp);text-transform:uppercase;line-height:.95;letter-spacing:.01em}
+  h1{font-weight:900;font-size:clamp(3rem,9vw,7.2rem)}
+  h2{font-weight:800;font-size:clamp(2.2rem,5.5vw,4.2rem)}
+  h3{font-weight:800;font-size:clamp(1.3rem,2.4vw,1.8rem)}
+  p{max-width:62ch}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+  .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--chalk)}
+  .sec{padding:96px 0;position:relative}
+  .num{font-variant-numeric:tabular-nums}
+  /* chalk line reveal */
+  .chalkline{height:2px;background:var(--chalk);width:0;box-shadow:0 0 8px rgba(79,134,247,.8);transition:width .5s var(--ease)}
+  .chalkline.snap{width:100%}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    *{animation:none!important;transition:none!important}
+  }
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--torch);color:#fff;font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem;padding:18px 34px;text-decoration:none;border:none;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s var(--ease);box-shadow:0 6px 24px rgba(255,77,0,.35);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)}
+  .btn:hover{transform:translateY(-3px)}
+  .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--chalk);clip-path:none}
+  .btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
+
+  /* ===== NAV ===== */
+  nav{position:sticky;top:0;z-index:60;background:rgba(21,23,28,.94);backdrop-filter:blur(8px);border-bottom:1px solid #2C313B}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{font-family:var(--disp);font-weight:900;font-size:1.5rem;text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+  .logo span{color:var(--torch)}
+  .logo .sub{display:block;font-family:var(--mono);font-size:.6rem;color:var(--chalk);letter-spacing:.28em;font-weight:400}
+  .navr{display:flex;align-items:center;gap:22px}
+  .navlinks{display:flex;gap:22px;font-size:.9rem;font-weight:500}
+  .navlinks a{text-decoration:none;color:var(--ink-dim)}
+  .navlinks a:hover{color:var(--ink)}
+  .navphone{font-family:var(--mono);font-size:.85rem;color:var(--ink);text-decoration:none}
+  nav .btn{padding:10px 20px;font-size:.9rem}
+  /* level bubble */
+  .level{width:64px;height:14px;border:1px solid #3A4150;border-radius:7px;position:relative;background:#1B1E24}
+  .level::before,.level::after{content:"";position:absolute;top:0;bottom:0;width:1px;background:#3A4150}
+  .level::before{left:26px}.level::after{right:26px}
+  .bubble{position:absolute;top:2px;left:27px;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#BFF3D8,#57C48B);transition:left .3s var(--ease)}
+  @media(max-width:900px){.navlinks,.level,.navphone{display:none}}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;background:#0E1013 center/cover no-repeat;background-image:url("assets/hero-crew.jpg");animation:kenburns 18s var(--ease) forwards}
+  @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,23,28,.35) 0%,rgba(21,23,28,.15) 40%,rgba(21,23,28,.92) 88%)}
+  .hero .wrap{padding-bottom:72px;padding-top:140px;width:100%}
+  .takeoff{position:relative;margin-bottom:26px}
+  .takeoff .anno{position:absolute;top:-26px;left:0;opacity:0;transition:opacity .5s .5s}
+  .takeoff.on .anno{opacity:1}
+  .hero h1{max-width:14ch;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .hero h1 em{font-style:normal;color:var(--torch)}
+  .hero .sub{margin-top:20px;font-size:1.15rem;max-width:56ch;color:#D9D6CF}
+  .hero .sub b{color:#fff}
+  .heroctas{display:flex;gap:18px;align-items:center;margin-top:30px;flex-wrap:wrap}
+  /* inspection tag CTA */
+  .tag-cta{position:relative;background:var(--kraft);color:#241A0E;font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:1.15rem;padding:20px 30px 20px 46px;text-decoration:none;transition:transform .3s var(--ease);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  .tag-cta::before{content:"";position:absolute;left:16px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--bitumen);box-shadow:inset 0 0 0 2.5px var(--kraft),0 0 0 2.5px #A87E44}
+  .tag-cta::after{content:"";position:absolute;left:-26px;top:50%;width:30px;height:2px;background:var(--torch);transform:translateY(-50%) rotate(-18deg)}
+  .tag-cta:hover{transform:rotate(-1.2deg) translateY(-2px)}
+  .herostats{display:flex;gap:40px;margin-top:46px;flex-wrap:wrap}
+  .hstat b{display:block;font-family:var(--disp);font-weight:900;font-size:2.4rem;color:#fff}
+  .hstat span{font-family:var(--mono);font-size:.72rem;color:var(--chalk);letter-spacing:.1em;text-transform:uppercase}
+
+  /* ===== PAPER SECTIONS ===== */
+  .paper{background:var(--paper);color:var(--paper-ink)}
+  .paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(79,134,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(79,134,247,.05) 1px,transparent 1px);background-size:24px 24px}
+  .paper .mono{color:#3A6AD1}
+  .kicker{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .kicker .chalkline{max-width:70px}
+  .kicker span{font-family:var(--mono);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk)}
+  .paper .kicker span{color:#3A6AD1}
+
+  /* different section */
+  .diffgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-top:40px}
+  @media(max-width:940px){.diffgrid{grid-template-columns:1fr}}
+  .ticket{background:#fff;border:1px solid #DDD6C8;box-shadow:0 3px 0 #DDD6C8,0 16px 40px rgba(27,29,34,.10);padding:30px;position:relative;margin-bottom:20px}
+  .ticket::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background-image:radial-gradient(circle at 8px 0,transparent 5px,#F2EEE6 5px);background-size:16px 6px;background-position:0 -3px}
+  .ticket .tno{font-family:var(--mono);font-size:.72rem;color:var(--paper-dim);letter-spacing:.1em}
+  .ticket h3{margin:8px 0 8px;color:var(--paper-ink)}
+  .ticket p{font-size:.98rem;color:#3E3B34}
+  .ticket .mark{color:#3A6AD1;font-weight:600}
+  .buytime{background:var(--paper-ink);color:var(--ink);padding:34px;position:relative}
+  .buytime h3{color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);max-width:16ch}
+  .buytime h3 em{font-style:normal;color:var(--torch)}
+  .buytime p{margin-top:14px;color:#C9C6BF}
+  .circle-anno{position:relative;display:inline-block}
+  .circle-anno svg{position:absolute;inset:-14px -20px;width:calc(100% + 40px);height:calc(100% + 28px);pointer-events:none}
+
+  /* ===== STRAIGHT TALK ===== */
+  .talkgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2C313B;margin-top:44px}
+  @media(max-width:980px){.talkgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.talkgrid{grid-template-columns:1fr}}
+  .talk{background:var(--char);padding:26px;position:relative;overflow:hidden;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end}
+  .talk .timg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.28;transition:opacity .4s,transform .6s var(--ease)}
+  .talk:hover .timg{opacity:.45;transform:scale(1.05)}
+  .talk .tshade{position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(21,23,28,.9))}
+  .talk .mono{position:relative;margin-bottom:6px}
+  .talk p{position:relative;font-size:1.02rem;font-weight:500;color:#F2EFE8;line-height:1.4}
+  .talk p b{color:var(--torch)}
+  .talkfoot{margin-top:36px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .talkfoot p{font-size:1.1rem;color:#D9D6CF;max-width:50ch}
+
+  /* ===== LEAK CALCULATOR ===== */
+  .leak{background:var(--paper);color:var(--paper-ink)}
+  .leaksheet{background:#fff;border:1px solid #DDD6C8;box-shadow:0 24px 60px rgba(27,29,34,.12);margin-top:44px;display:grid;grid-template-columns:1.15fr .85fr}
+  @media(max-width:940px){.leaksheet{grid-template-columns:1fr}}
+  .leakL{padding:38px;border-right:2px dashed #DDD6C8}
+  @media(max-width:940px){.leakL{border-right:none;border-bottom:2px dashed #DDD6C8}}
+  .leakR{padding:38px;background:var(--paper-ink);color:var(--ink);display:flex;flex-direction:column;justify-content:center}
+  .lfield{margin-bottom:22px}
+  .lfield label{display:flex;justify-content:space-between;font-weight:600;font-size:.95rem;margin-bottom:8px}
+  .lfield output{font-family:var(--mono);color:#3A6AD1;font-weight:500}
+  input[type=range]{width:100%;accent-color:var(--torch);height:6px}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  @media(max-width:600px){.checks{grid-template-columns:1fr}}
+  .chk{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid #DDD6C8;padding:12px 14px;cursor:pointer;font-size:.9rem;line-height:1.35;transition:border-color .2s,background .2s;user-select:none}
+  .chk:hover{border-color:#3A6AD1}
+  .chk input{margin-top:3px;accent-color:#2E9E6B;width:16px;height:16px;flex:none}
+  .chk.on{background:#EAF3EC;border-color:#2E9E6B}
+  .chk .pct{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--bad);white-space:nowrap;flex:none}
+  .chk.on .pct{color:#2E9E6B}
+  .leakR .rline{font-family:var(--mono);font-size:.75rem;color:var(--chalk);letter-spacing:.12em;text-transform:uppercase}
+  .leaktotal{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,6vw,4.6rem);color:var(--torch);line-height:1;margin:12px 0 4px}
+  .leaksub{color:#C9C6BF;font-size:.95rem}
+  .leakbars{margin-top:26px;display:flex;flex-direction:column;gap:9px}
+  .lb{display:grid;grid-template-columns:130px 1fr 70px;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;color:#9B978F}
+  .lb i{display:block;height:8px;background:#2C313B;position:relative;overflow:hidden}
+  .lb i b{position:absolute;left:0;top:0;bottom:0;background:var(--bad);width:0;transition:width .8s var(--ease)}
+  .lb.won i b{background:var(--good)}
+  .lb span:last-child{text-align:right;color:var(--ink)}
+  .leakcta{margin-top:28px}
+
+  /* ===== MACHINES (shingle courses) ===== */
+  .courses{margin-top:48px;display:flex;flex-direction:column}
+  .course{background:var(--char);border:1px solid #2C313B;padding:0;display:grid;grid-template-columns:.9fr 1.1fr;min-height:340px;position:relative;box-shadow:0 -14px 30px rgba(0,0,0,.35)}
+  .course+.course{margin-top:-26px}
+  .course:nth-child(even){grid-template-columns:1.1fr .9fr}
+  .course:nth-child(even) .cimg{order:2}
+  @media(max-width:900px){.course,.course:nth-child(even){grid-template-columns:1fr}.course:nth-child(even) .cimg{order:0}.course+.course{margin-top:18px}}
+  .cimg{background:center/cover no-repeat;min-height:230px;position:relative}
+  .cimg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--char))}
+  .course:nth-child(even) .cimg::after{background:linear-gradient(270deg,transparent 60%,var(--char))}
+  .cbody{padding:34px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+  .cbody h3{color:#fff}
+  .cbody h3 span{color:var(--chalk)}
+  .cbody p{color:#C9C6BF;font-size:1rem}
+  .cbody p b{color:#fff}
+  .cdemo{background:#1B1E24;border:1px solid #2C313B;padding:16px;margin-top:6px}
+  .cdemo .dlabel{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--chalk);margin-bottom:10px}
+  /* mini demos */
+  .stars{display:flex;gap:8px}
+  .stars button{font-size:1.6rem;background:none;border:none;cursor:pointer;color:#4A4438;transition:color .12s,transform .12s}
+  .stars button.lit{color:#F5B417}
+  .stars button:hover{transform:scale(1.15)}
+  .routeout{margin-top:10px;font-size:.88rem;font-weight:600;min-height:40px;display:flex;align-items:center;gap:10px;color:#C9C6BF}
+  .pill{padding:5px 12px;font-family:var(--mono);font-size:.72rem}
+  .toG{background:rgba(46,158,107,.15);color:#6FD3A4}
+  .toP{background:rgba(209,72,54,.15);color:#F09083}
+  .bub{max-width:88%;padding:8px 12px;margin-bottom:7px;font-size:.85rem;line-height:1.4;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;border:1px solid #2C313B}
+  .bub.on{opacity:1;transform:none}
+  .bub.them{background:#252932;color:#D9D6CF}
+  .bub.us{background:#20304E;border-color:#31517F;color:#DCE7F8;margin-left:auto}
+  .bub.sys{background:transparent;border:1px dashed #3A4150;text-align:center;max-width:100%;font-family:var(--mono);font-size:.7rem;color:#9B978F}
+  .aichat .q{font-family:var(--mono);font-size:.78rem;color:#D9D6CF;margin-bottom:8px}
+  .aichat .a{border-left:2px solid var(--chalk);padding-left:12px;color:#C9C6BF;font-size:.85rem;min-height:60px;white-space:pre-wrap}
+  .aichat .a b{color:#fff}
+  .cursor{display:inline-block;width:7px;height:13px;background:var(--chalk);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .matrix{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
+  .mcell{aspect-ratio:1;background:#252932;transition:background .3s,transform .3s}
+  .mcell.on{background:var(--chalk);transform:scale(1.08)}
+  .matrixcap{margin-top:10px;font-family:var(--mono);font-size:.72rem;color:#9B978F}
+  .matrixcap b{color:var(--chalk)}
+
+  /* ===== INTERLUDE (before/after) ===== */
+  .interlude{position:relative;min-height:64vh;background:center/cover no-repeat fixed;background-image:url("assets/before-after.jpg");display:flex;align-items:center}
+  @media(max-width:900px){.interlude{background-attachment:scroll}}
+  .interlude .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,23,28,.85),rgba(21,23,28,.2))}
+  .interlude h2{max-width:13ch;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+  .interlude .mono{display:block;margin-bottom:12px}
+
+  /* ===== PROOF ===== */
+  .proofgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#2C313B;margin-top:44px}
+  @media(max-width:900px){.proofgrid{grid-template-columns:repeat(2,1fr)}}
+  .pcell{background:var(--char);padding:28px;text-align:center}
+  .pcell b{display:block;font-family:var(--disp);font-weight:900;font-size:2.6rem;color:#fff}
+  .pcell span{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk)}
+  .slotrow{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+  @media(max-width:760px){.slotrow{grid-template-columns:1fr}}
+  .slot{border:2px dashed #3A4150;padding:22px;font-size:.9rem;color:#9B978F}
+  .slot b{display:block;color:var(--ink);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .quote{border-left:3px solid var(--kraft);padding:6px 0 6px 22px;margin-top:30px;font-size:1.35rem;font-style:italic;color:#F2EFE8;max-width:34ch}
+  .quote cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);font-size:.75rem;color:#9B978F}
+
+  /* ===== PACKAGES (paper tickets) ===== */
+  .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;align-items:stretch}
+  @media(max-width:980px){.packs{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}}
+  .pack{background:#fff;border:1px solid #DDD6C8;box-shadow:0 3px 0 #DDD6C8,0 18px 44px rgba(27,29,34,.10);padding:32px 28px;display:flex;flex-direction:column;position:relative}
+  .pack::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background-image:radial-gradient(circle at 8px 0,transparent 5px,#F2EEE6 5px);background-size:16px 6px;background-position:0 -3px}
+  .pack .sla{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#3A6AD1;margin-bottom:10px}
+  .pack h3{color:var(--paper-ink);font-size:1.7rem}
+  .pack .for{font-size:.9rem;color:var(--paper-dim);margin:10px 0 18px;min-height:44px}
+  .pack .price{font-family:var(--disp);font-weight:900;font-size:2.6rem;color:var(--paper-ink)}
+  .pack .price span{font-family:var(--mono);font-size:.7rem;font-weight:400;color:var(--paper-dim);letter-spacing:.06em}
+  .pack .permo{font-family:var(--mono);font-size:.9rem;color:#B4400B;font-weight:500;margin-bottom:16px}
+  .pack ul{list-style:none;flex:1;margin-bottom:24px}
+  .pack li{padding:8px 0 8px 26px;position:relative;font-size:.9rem;border-bottom:1px solid #EFEAE0;color:#3E3B34}
+  .pack li::before{content:"✓";position:absolute;left:0;color:#2E9E6B;font-weight:700}
+  .pack li.plus{font-weight:600;color:var(--paper-ink)}
+  .pack .btn{justify-content:center;font-size:.95rem;padding:15px 20px}
+  .pack.dark{background:var(--paper-ink);border-color:#000}
+  .pack.dark::before{background-image:radial-gradient(circle at 8px 0,transparent 5px,#F2EEE6 5px)}
+  .pack.dark h3,.pack.dark .price{color:#fff}
+  .pack.dark .for{color:#9B978F}
+  .pack.dark li{color:#C9C6BF;border-bottom-color:#2C313B}
+  .pack.dark li.plus{color:#fff}
+  .pack.dark .sla{color:var(--chalk)}
+  .pack.dark .permo{color:var(--kraft)}
+  .gbox{background:#252932;border:1px solid var(--kraft);padding:14px 16px;margin-bottom:16px;font-size:.85rem;color:#E8E6E1}
+  .gbox b{color:var(--kraft)}
+
+  /* hazard stripe + guarantee band */
+  .hazard{height:14px;background:repeating-linear-gradient(45deg,var(--torch) 0 16px,var(--bitumen) 16px 32px);margin-top:64px}
+  .gband{background:var(--paper-ink);padding:56px 0}
+  .gband h2{color:#fff;max-width:20ch}
+  .gband h2 em{font-style:normal;color:var(--torch)}
+  .gband p{margin-top:16px;color:#C9C6BF}
+
+  /* ===== GAME PLAN FORM ===== */
+  .plan{background:var(--paper);color:var(--paper-ink)}
+  .plangrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;align-items:start}
+  @media(max-width:900px){.plangrid{grid-template-columns:1fr}}
+  .plansteps{display:flex;flex-direction:column;gap:0}
+  .pstep{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #DDD6C8}
+  .pstep .n{font-family:var(--disp);font-weight:900;font-size:2rem;color:#3A6AD1;line-height:1}
+  .pstep p{font-size:.98rem;color:#3E3B34}
+  .pstep b{color:var(--paper-ink)}
+  form.gplan{background:#fff;border:1px solid #DDD6C8;box-shadow:0 18px 44px rgba(27,29,34,.10);padding:32px}
+  .gplan label{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim);margin:16px 0 6px}
+  .gplan input,.gplan select{width:100%;padding:13px 14px;border:1px solid #CFC8B8;background:var(--paper);font-family:var(--body);font-size:1rem;color:var(--paper-ink)}
+  .gplan .btn{width:100%;justify-content:center;margin-top:22px}
+  .gplan .alt{margin-top:14px;text-align:center;font-size:.88rem;color:var(--paper-dim)}
+  .gplan .alt a{color:#B4400B;font-weight:600}
+
+  footer{padding:36px 0;border-top:1px solid #2C313B;font-family:var(--mono);font-size:.72rem;color:#9B978F}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .sticky{position:fixed;bottom:0;left:0;right:0;z-index:70;background:rgba(21,23,28,.97);border-top:1px solid #2C313B;padding:10px 16px;display:none;align-items:center;justify-content:space-between;gap:12px}
+  .sticky.show{display:flex}
+  .sticky span{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:.95rem}
+  .sticky span b{color:var(--torch)}
+  .sticky .btn{padding:10px 18px;font-size:.85rem}
+  @media(min-width:901px){.sticky{display:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">LEADRA<span>.</span><span class="sub">ROOFING GROWTH DIVISION</span></a>
+    <div class="navr">
+      <div class="navlinks">
+        <a href="#leaks">Your Leaks</a>
+        <a href="#machines">The System</a>
+        <a href="#packages">Packages</a>
+      </div>
+      <div class="level" aria-hidden="true"><div class="bubble" id="bubble"></div></div>
+      <a class="navphone" href="tel:+13024959984">(302) 495-9984</a>
+      <a class="btn" href="#gameplan">Free game plan</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="bg" role="img" aria-label="Roofing crew working on a steep shingle roof at golden hour"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="takeoff" id="takeoff">
+      <div class="chalkline" id="heroline"></div>
+      <div class="anno mono">JOB SITE: YOUR TOWN &nbsp;·&nbsp; CREW: OURS &nbsp;·&nbsp; TARGET: YOUR CALENDAR, FULL</div>
+    </div>
+    <h1>Your phone rings.<br>Your calendar fills.<br><em>Every month.</em></h1>
+    <p class="sub">We install the client machine for roofing companies. Ads, Google, AI answering, reviews, reactivation. All of it run by <b>a dedicated ad team</b>, all of it measured. Top package is guaranteed in writing: <b>30 new clients in 90 days or you do not pay. Money back.</b></p>
+    <div class="heroctas">
+      <a class="tag-cta" href="#gameplan">Get your free 30 day game plan</a>
+      <a class="btn line" href="#leaks">See what you are losing</a>
+    </div>
+    <div class="herostats">
+      <div class="hstat"><b class="num" data-count="300" data-prefix="$" data-suffix="K+">$0</b><span>Ad spend managed</span></div>
+      <div class="hstat"><b class="num" data-count="9000" data-suffix="+">0</b><span>Leads generated</span></div>
+      <div class="hstat"><b>5.0 ★</b><span>Flagship client rating</span></div>
+      <div class="hstat"><b>24/7</b><span>Every call answered</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= WHAT WE DO DIFFERENTLY ================= -->
+<section class="sec paper" id="different">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>What we do differently</span></div>
+    <h2>Before you pay a dollar,<br>you get the whole plan.</h2>
+    <div class="diffgrid">
+      <div>
+        <div class="ticket reveal">
+          <div class="tno">STEP 01 · THE AUDIT</div>
+          <h3>We audit your whole market</h3>
+          <p>Your business, your area, and your competitors. What they run, what they rank for, where their jobs come from. It becomes a <span class="mark">20 page audit</span> that shows every good side and every bad side of your operation. Where you are. Where the jobs are leaking.</p>
+        </div>
+        <div class="ticket reveal">
+          <div class="tno">STEP 02 · THE CALL</div>
+          <h3>We hand you the 30 day game plan. Free.</h3>
+          <p>Fill the form, get on a call. I walk you through the audit and a <span class="mark">30 day strategy built to double your client flow</span>. It is yours either way. Take it and run it yourself if you want to. That is why owners talk to us.</p>
+        </div>
+        <div class="ticket reveal">
+          <div class="tno">STEP 03 · THE DECISION</div>
+          <h3>Then you decide</h3>
+          <p>If you want it done for you, we install the machine and run it. If not, you still walk away knowing exactly what to fix first. <span class="mark">No pressure on the call. The plan does the selling.</span></p>
+        </div>
+      </div>
+      <div class="buytime reveal">
+        <h3>You are not buying services. <em>You are buying your time.</em></h3>
+        <p>Honestly, you can do everything we do on your own. The ads, the SEO, the automations, the follow up. Every piece can be learned.</p>
+        <p>The question is different. Do you have <span class="circle-anno">several years<svg viewBox="0 0 120 44" preserveAspectRatio="none"><ellipse cx="60" cy="22" rx="56" ry="18" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="240" stroke-dashoffset="0" opacity=".85"/></svg></span> to reach expert level while your competitors are taking jobs off your table every week?</p>
+        <p>We spent the years and the $300k of ad budget already. You get the result without the tuition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRAIGHT TALK ================= -->
+<section class="sec" id="talk">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>Look at your business. You already know.</span></div>
+    <h2>You have these. Every one<br>is costing you jobs.</h2>
+    <div class="talkgrid">
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-missed-call.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 01 · SPEED</span><p>Nobody calls your leads back in the first minute. No automation doing it either. <b>That is up to 70% of your inquiries gone.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-quiet-office.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 02 · OLD CUSTOMERS</span><p>You never work your past customer list. No review asks, no referral asks, no check ins. <b>Another 50 to 80% left on the table.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/storm.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 03 · STORM ONLY</span><p>Your calendar only fills after a storm. Repairs, not replacements. <b>Feast and famine is not a business model.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/ad-team.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 04 · TRACKING</span><p>No pixel on your site. No LSA. No Google Ads, or ads running blind with nobody watching them daily. <b>Every dollar untracked is a dollar leaking.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/craft-hands.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 05 · FREE ESTIMATES</span><p>You drive out to every tire kicker for free. No returnable deposit before the inspection, no CRM tracking who is real. <b>Days of your life, gone.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/review.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 06 · PRESENCE</span><p>Under 100 reviews. Under 4.8 stars. No professional video, dead social pages. <b>Homeowners check all of it before they call.</b></p></div>
+    </div>
+    <div class="talkfoot reveal">
+      <p>We are not asking if you need help. We are telling you what you have. Every leak above has a machine that fixes it, and we install all of them.</p>
+      <a class="btn" href="#leaks">Count your leaks below</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEAK CALCULATOR ================= -->
+<section class="sec leak" id="leaks">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>The takeoff sheet · Check what you already have</span></div>
+    <h2>How much are you leaving<br>on the table this year?</h2>
+    <div class="leaksheet reveal">
+      <div class="leakL">
+        <div class="lfield">
+          <label>Average job value <output id="o_job" class="num">$12,000</output></label>
+          <input type="range" id="r_job" min="5000" max="30000" step="500" value="12000" aria-label="Average job value">
+        </div>
+        <div class="lfield">
+          <label>Jobs you close a month right now <output id="o_jobs" class="num">6</output></label>
+          <input type="range" id="r_jobs" min="1" max="40" step="1" value="6" aria-label="Jobs per month">
+        </div>
+        <p style="font-family:var(--mono);font-size:.72rem;color:var(--paper-dim);letter-spacing:.06em;margin:8px 0 4px">CHECK EVERYTHING YOUR BUSINESS ALREADY DOES:</p>
+        <div class="checks" id="checks"></div>
+      </div>
+      <div class="leakR">
+        <span class="rline">ESTIMATED REVENUE LEFT ON THE TABLE</span>
+        <div class="leaktotal num" id="leaktotal">$0</div>
+        <p class="leaksub">per year, in your own service area, based on <span class="num" id="leakbase">6 jobs at $12,000</span> and the boxes you have not checked. Industry response and reactivation rates behind every number, shown on the call.</p>
+        <div class="leakbars" id="leakbars"></div>
+        <div class="leakcta"><a class="btn" href="#gameplan">Plug the leaks. Free plan.</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MACHINES ================= -->
+<section class="sec" id="machines">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>The system · installed in your business</span></div>
+    <h2>One machine per leak.<br>All of them run for you.</h2>
+
+    <div class="courses">
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/ad-team.jpg')"></div>
+        <div class="cbody">
+          <h3><span>01 ·</span> The Ads Desk</h3>
+          <p>A dedicated team of ad specialists watching your campaigns every day. Your ads are always under control, never set and forgotten. <b>Already running ads? We take your current budget and bring at least 30% more customers. Up to double.</b> Same money, more roofs.</p>
+          <div class="cdemo"><div class="dlabel">What we watch daily</div><span class="mono">CTR · CPL · CPA · CPM · LEAD QUALITY · CREATIVE FATIGUE · NEGATIVES</span></div>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/booked-calendar.jpg')"></div>
+        <div class="cbody">
+          <h3><span>02 ·</span> The AI Answer Desk</h3>
+          <p>Answers every call in one ring, nights and weekends. Books the estimate, texts the customer, saves the lead. Every missed call texted back in 60 seconds.</p>
+          <div class="cdemo" id="phonedemo">
+            <div class="dlabel">Tuesday, 7:42 PM. You were on a roof.</div>
+            <div class="bub them">Hi, my roof is leaking near the chimney, are you still open?</div>
+            <div class="bub us">We are. I can get you a free inspection tomorrow. 9:30 AM work?</div>
+            <div class="bub them">Yes. Let me give you the address.</div>
+            <div class="bub sys">ESTIMATE BOOKED · OWNER TEXTED · LEAD SAVED TO CRM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/review.jpg')"></div>
+        <div class="cbody">
+          <h3><span>03 ·</span> The Review Filter</h3>
+          <p>One text after every job. Happy customers land on Google. Unhappy ones land with you, privately, before your rating feels it. Tap a rating and watch it route.</p>
+          <div class="cdemo">
+            <div class="dlabel">Live demo</div>
+            <div class="stars" id="stars" role="group" aria-label="Pick a star rating"><button aria-label="1 star">★</button><button aria-label="2 stars">★</button><button aria-label="3 stars">★</button><button aria-label="4 stars">★</button><button aria-label="5 stars">★</button></div>
+            <div class="routeout" id="routeout">Tap the stars to see where the review goes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/aerial.jpg')"></div>
+        <div class="cbody">
+          <h3><span>04 ·</span> The Map Takeover</h3>
+          <p>A page for every service in every town you cover, plus your Google profile rebuilt to rank. Our flagship roofing client has 146 pages working while he sleeps.</p>
+          <div class="cdemo">
+            <div class="dlabel">Your county, covered</div>
+            <div class="matrix" id="matrix" aria-hidden="true"></div>
+            <p class="matrixcap"><b class="num" id="matrixcount">0</b> PAGES LIVE AND RANKING</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/handshake.jpg')"></div>
+        <div class="cbody">
+          <h3><span>05 ·</span> The Comeback Machine</h3>
+          <p>Your old customers and dead leads get worked every month. Repairs, referrals with a bonus program, reviews. Most roofers see jobs come back in the first week.</p>
+          <div class="cdemo" id="reactdemo">
+            <div class="dlabel">Day 3 of a reactivation run</div>
+            <div class="bub us">Hey Rhonda, it has been two years since your roof. Want a free storm season checkup? We also pay $250 for referrals now.</div>
+            <div class="bub them">Perfect timing. My neighbor needs a full replacement, sending her your number.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course reveal">
+        <div class="cimg" style="background-image:url('assets/storm.jpg')"></div>
+        <div class="cbody">
+          <h3><span>06 ·</span> The Storm Trigger + AI Visibility</h3>
+          <p>When a storm hits your area, the system activates by itself: storm pages, storm ads, storm follow up. And when homeowners ask ChatGPT who to call, it says your name.</p>
+          <div class="cdemo aichat">
+            <div class="q">&gt; best roofer near Mooresville NC</div>
+            <div class="a" id="aians"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTERLUDE ================= -->
+<section class="interlude" id="proofpic">
+  <div class="shade"></div>
+  <div class="wrap reveal">
+    <span class="mono">THE ONLY PART WE LEAVE TO YOU IS THE ROOF.</span>
+    <h2>We fill the calendar.<br>You do the work.</h2>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section class="sec" id="results">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>Receipts, not promises</span></div>
+    <h2>Built on a real roofing<br>company first.</h2>
+    <p style="margin-top:16px;color:#C9C6BF">CER Roofing Contractors, Mt Ulla, North Carolina. Everything on this page runs on his business right now. <a href="https://cer-results-7991.netlify.app" style="color:var(--chalk)">See every before and after live</a>.</p>
+    <div class="proofgrid">
+      <div class="pcell reveal"><b>5.0 ★</b><span>85 Google reviews, filter protected</span></div>
+      <div class="pcell reveal"><b class="num" data-count="146">0</b><span>SEO pages live for one client</span></div>
+      <div class="pcell reveal"><b class="num" data-count="987">0</b><span>calls from his Google listing</span></div>
+      <div class="pcell reveal"><b>24/7</b><span>AI line answering and booking</span></div>
+    </div>
+    <div class="slotrow">
+      <div class="slot reveal"><b>Screenshot slot · The ad account</b>$300k+ managed spend, straight from the ads manager.</div>
+      <div class="slot reveal"><b>Screenshot slot · Client texts</b>Real conversations. Booked jobs, thank yous, referrals.</div>
+    </div>
+    <!-- VERIFY exact wording against the real screenshot before deploy -->
+    <div class="quote reveal">"I don't know how you do it, but it's worth to keep going this way."<cite>CHEVY ROLLINGS · OWNER, CER ROOFING CONTRACTORS</cite></div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<section class="sec paper" id="packages">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>Pricing, in the open</span></div>
+    <h2>Three ways in.</h2>
+    <p style="margin-top:14px;color:#3E3B34">Almost nobody in this industry publishes prices. We do. One roofer per area. One roof job is $9,000 plus, so land one job a month and the system pays for itself.</p>
+    <div class="packs">
+
+      <div class="pack reveal">
+        <div class="sla">Package 01 · Live in 14 days</div>
+        <h3>Minimum Package</h3>
+        <div class="for">Built or fixed for you. Stops the bleeding: no more missed calls, no more invisible Google profile.</div>
+        <div class="price num">$1,500 <span>SETUP, ONE TIME</span></div>
+        <div class="permo num">then $997 a month</div>
+        <ul>
+          <li>Website that turns clicks into calls, built new or rebuilt</li>
+          <li>AI receptionist answering 24/7, nights and weekends</li>
+          <li>Every missed call texted back in 60 seconds</li>
+          <li>Google profile set up, cleaned up, optimized to rank</li>
+          <li>Review requests after every job, automatically</li>
+          <li>CRM, hosting and a monthly report</li>
+          <li class="plus">Walk away with: zero missed calls, a steady stream of 5 star reviews</li>
+        </ul>
+        <a class="btn" style="background:var(--paper-ink);box-shadow:none" href="#gameplan">Start with the audit</a>
+      </div>
+
+      <div class="pack reveal">
+        <div class="sla">Package 02 · Most of the way · Live in 60 days</div>
+        <h3>Busy Every Month</h3>
+        <div class="for">Everything in 01, plus the machines that go get the work instead of waiting for it.</div>
+        <div class="price num">$3,000 <span>SETUP, ONE TIME</span></div>
+        <div class="permo num">then $1,997 a month</div>
+        <ul>
+          <li class="plus">Everything in 01, plus</li>
+          <li>Google + Meta ads, run daily by the ads desk</li>
+          <li>Local SEO on every service and every city you cover</li>
+          <li>30 SEO blog posts a month, written and posted</li>
+          <li>Your old customer list worked every month</li>
+          <li>Monthly call with your numbers on the screen</li>
+          <li class="plus">Walk away with: work lined up before this month ends</li>
+        </ul>
+        <a class="btn" href="#gameplan">Claim your area</a>
+      </div>
+
+      <div class="pack dark reveal">
+        <div class="sla">Package 03 · Guaranteed · 90 days</div>
+        <h3>Leads, Guaranteed</h3>
+        <div class="for">Everything in 01 + 02, plus the full weight of our network behind you.</div>
+        <div class="price num">$6,000 <span>SETUP, ONE TIME</span></div>
+        <div class="permo num">then $3,997 a month</div>
+        <div class="gbox"><b>The guarantee:</b> 30 new clients in 90 days or you do not pay. Money back, and you keep everything we built. Terms in plain English, in writing, before you pay a dollar.</div>
+        <ul>
+          <li>Only in 03: 10 premium ad sets, rotated so ads never go stale</li>
+          <li>Only in 03: social media done for you, up to 5 channels</li>
+          <li>AI search visibility: recommended by ChatGPT, Gemini, Claude and Grok</li>
+          <li>Storm trigger system armed for your area</li>
+          <li>First refusal on leads from our own local sites</li>
+          <li>Live dashboard, bi weekly call, direct line to me</li>
+        </ul>
+        <a class="btn" href="#gameplan">Take the guarantee</a>
+      </div>
+    </div>
+  </div>
+  <div class="hazard" aria-hidden="true"></div>
+</section>
+
+<!-- ================= GUARANTEE ================= -->
+<section class="gband">
+  <div class="wrap reveal">
+    <h2><em>30 new clients in 90 days</em> or you do not pay.</h2>
+    <p>Money back. You keep the website, the AI line, the reviews and every lead. We can only write that because the machine already runs on real roofing companies. Simple conditions, three lines, in the agreement you read before paying.</p>
+  </div>
+</section>
+
+<!-- ================= GAME PLAN ================= -->
+<section class="sec plan" id="gameplan">
+  <div class="wrap">
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>The free 30 day game plan</span></div>
+    <h2>Fill the form. Get the plan.<br>Use it however you want.</h2>
+    <div class="plangrid">
+      <div class="plansteps reveal">
+        <div class="pstep"><div class="n">1</div><p><b>You fill the form.</b> Takes 60 seconds. Tell us who you are and where you work.</p></div>
+        <div class="pstep"><div class="n">2</div><p><b>We build your 20 page audit.</b> Your business, your area, your competitors. The good and the bad, in plain English.</p></div>
+        <div class="pstep"><div class="n">3</div><p><b>We get on a call.</b> I walk you through the whole 30 day strategy to double your client flow. Screen shared, nothing held back.</p></div>
+        <div class="pstep"><div class="n">4</div><p><b>It is yours. Free.</b> Run it yourself if you want. Or have us install it. Either way you know exactly what to do next.</p></div>
+        <div style="padding-top:22px"><span class="mono" style="color:#3A6AD1">PREFER THE PHONE? CALL OR TEXT (302) 495-9984</span></div>
+      </div>
+      <form class="gplan reveal" action="#" method="post" data-note="wire to GHL webhook on deploy">
+        <label for="f_name">Your name</label>
+        <input id="f_name" name="name" type="text" autocomplete="name" required>
+        <label for="f_company">Company name</label>
+        <input id="f_company" name="company" type="text" autocomplete="organization" required>
+        <label for="f_phone">Cell phone</label>
+        <input id="f_phone" name="phone" type="tel" autocomplete="tel" required>
+        <label for="f_city">City and state you work in</label>
+        <input id="f_city" name="city" type="text" required>
+        <label for="f_jobs">Jobs you close a month right now</label>
+        <select id="f_jobs" name="jobs"><option>1 to 4</option><option>5 to 10</option><option>11 to 20</option><option>20 plus</option></select>
+        <button class="btn" type="submit">Send me the free game plan</button>
+        <p class="alt">Or book the call straight away: <a href="https://calendly.com/tim161101/roofer-growth-call">pick a time here</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 LEADRA · BRIDGE SUPPLY CO LLC D/B/A LEADRA.IO</span>
+    <span>ONE ROOFER PER AREA · YOU OWN EVERYTHING WE BUILD</span>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <span><b>30 clients in 90 days</b> or you do not pay</span>
+  <a class="btn" href="#gameplan">Free plan</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reveals */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+
+  /* chalk line snaps */
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("snap");cio.unobserve(e.target);}});},{threshold:.8});
+  document.querySelectorAll(".snap-on-view").forEach(function(el){cio.observe(el);});
+  setTimeout(function(){document.getElementById("heroline").classList.add("snap");document.getElementById("takeoff").classList.add("on");},400);
+
+  /* counters with measuring wheel overshoot */
+  function fmt(n,p,s){return (p||"")+n.toLocaleString("en-US")+(s||"");}
+  var nio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var el=e.target,t=+el.dataset.count,p=el.dataset.prefix||"",s=el.dataset.suffix||"";
+    nio.unobserve(el);
+    if(reduced){el.textContent=fmt(t,p,s);return;}
+    var t0=null;
+    function step(ts){if(!t0)t0=ts;var pr=Math.min((ts-t0)/1300,1);
+      var eased=pr<0.85?(pr/0.85)*1.06:1.06-((pr-0.85)/0.15)*0.06;
+      el.textContent=fmt(Math.round(t*Math.min(eased,pr<1?eased:1)),p,s);
+      if(pr<1)requestAnimationFrame(step);else el.textContent=fmt(t,p,s);}
+    requestAnimationFrame(step);
+  });},{threshold:.5});
+  document.querySelectorAll("[data-count]").forEach(function(el){nio.observe(el);});
+
+  /* level bubble */
+  var bubble=document.getElementById("bubble"),lastY=0,vel=0,timer=null;
+  if(bubble){window.addEventListener("scroll",function(){
+    var y=window.scrollY;vel=Math.max(-1,Math.min(1,(y-lastY)/60));lastY=y;
+    bubble.style.left=(27+vel*22)+"px";
+    clearTimeout(timer);timer=setTimeout(function(){bubble.style.left="27px";},160);
+  },{passive:true});}
+
+  /* review filter */
+  var starBtns=document.querySelectorAll("#stars button"),routeout=document.getElementById("routeout");
+  starBtns.forEach(function(btn,idx){btn.addEventListener("click",function(){
+    starBtns.forEach(function(b,i){b.classList.toggle("lit",i<=idx);});
+    routeout.innerHTML=idx>=3?'<span class="pill toG">→ PUBLISHED TO GOOGLE</span> Your rating grows.':'<span class="pill toP">→ PRIVATE, TO YOU</span> Fixed before Google sees it.';
+  });});
+
+  /* conversations */
+  function playBubs(id){var box=document.getElementById(id);if(!box)return;
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;o.unobserve(box);
+      box.querySelectorAll(".bub").forEach(function(b,i){setTimeout(function(){b.classList.add("on");},reduced?0:400+i*900);});});},{threshold:.4});
+    o.observe(box);}
+  playBubs("phonedemo");playBubs("reactdemo");
+
+  /* seo matrix */
+  var matrix=document.getElementById("matrix"),mcount=document.getElementById("matrixcount"),cells=[];
+  if(matrix){for(var m=0;m<45;m++){var c=document.createElement("div");c.className="mcell";matrix.appendChild(c);cells.push(c);}
+    var mio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;mio.unobserve(matrix);
+      var order=cells.map(function(_,i){return i;}).sort(function(a,b){
+        return (Math.abs(a%9-4)+Math.abs(((a/9)|0)-2))-(Math.abs(b%9-4)+Math.abs(((b/9)|0)-2));});
+      var lit=0;order.forEach(function(idx,i){setTimeout(function(){cells[idx].classList.add("on");lit++;
+        mcount.textContent=Math.round(146*lit/cells.length);},reduced?0:i*60);});});},{threshold:.5});
+    mio.observe(matrix);}
+
+  /* ai chat typing */
+  var aians=document.getElementById("aians");
+  var aitext='Based on reviews and local expertise, CER Roofing Contractors stands out. 5.0 rating across 85 reviews, GAF and HAAG certified, free inspections...';
+  if(aians){var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;aio.unobserve(aians);
+    if(reduced){aians.innerHTML=aitext.replace("CER Roofing Contractors","<b>CER Roofing Contractors</b>");return;}
+    var i=0;aians.innerHTML='<span class="cursor"></span>';
+    var iv=setInterval(function(){i+=2;
+      aians.innerHTML=aitext.slice(0,i).replace("CER Roofing Contractors","<b>CER Roofing Contractors</b>")+'<span class="cursor"></span>';
+      if(i>=aitext.length){clearInterval(iv);aians.innerHTML=aitext.replace("CER Roofing Contractors","<b>CER Roofing Contractors</b>");}},28);});},{threshold:.5});
+    aio.observe(aians);}
+
+  /* ===== LEAK CALCULATOR ===== */
+  var LEAKS=[
+    {id:"speed",label:"Every lead called back within 60 seconds, automated",bar:"SPEED TO LEAD",f:.24},
+    {id:"react",label:"Past customer list worked every month",bar:"REACTIVATION",f:.16},
+    {id:"reviews",label:"4.8+ stars on Google",bar:"RATING",f:.07},
+    {id:"count",label:"100+ Google reviews",bar:"REVIEW COUNT",f:.06},
+    {id:"pixel",label:"Facebook pixel installed and tracking",bar:"META TRACKING",f:.05},
+    {id:"lsa",label:"Google Local Services Ads running",bar:"LSA",f:.09},
+    {id:"gads",label:"Google Ads managed daily by a specialist",bar:"GOOGLE ADS",f:.10},
+    {id:"video",label:"Professional video content for ads and site",bar:"VIDEO",f:.04},
+    {id:"deposit",label:"Returnable deposit taken before inspections",bar:"TIME PROTECTION",f:.03},
+    {id:"crm",label:"CRM tracking every lead and follow up",bar:"CRM",f:.08},
+    {id:"storm",label:"Storm response system that arms itself",bar:"STORM TRIGGER",f:.07},
+    {id:"referral",label:"Referral bonus program running",bar:"REFERRALS",f:.06},
+    {id:"social",label:"3+ social channels with quality content",bar:"SOCIAL",f:.04},
+    {id:"convert",label:"A sales process that converts leads to signed jobs",bar:"CONVERSION",f:.12}
+  ];
+  var checksBox=document.getElementById("checks"),barsBox=document.getElementById("leakbars");
+  var state={};
+  LEAKS.forEach(function(l){
+    state[l.id]=false;
+    var lab=document.createElement("label");lab.className="chk";
+    lab.innerHTML='<input type="checkbox" data-id="'+l.id+'"><span>'+l.label+'</span><span class="pct">-'+Math.round(l.f*100)+'%</span>';
+    checksBox.appendChild(lab);
+    var row=document.createElement("div");row.className="lb";row.id="lb-"+l.id;
+    row.innerHTML='<span>'+l.bar+'</span><i><b></b></i><span></span>';
+    barsBox.appendChild(row);
+  });
+  checksBox.addEventListener("change",function(e){
+    var id=e.target.dataset.id;if(!id)return;
+    state[id]=e.target.checked;
+    e.target.closest(".chk").classList.toggle("on",e.target.checked);
+    calc();
+  });
+  var rJob=document.getElementById("r_job"),rJobs=document.getElementById("r_jobs");
+  function money(n){return "$"+Math.round(n).toLocaleString("en-US");}
+  var lastTotal=0;
+  function calc(){
+    var job=+rJob.value,jobs=+rJobs.value;
+    document.getElementById("o_job").textContent=money(job);
+    document.getElementById("o_jobs").textContent=jobs;
+    document.getElementById("leakbase").textContent=jobs+" jobs at "+money(job);
+    var annual=job*jobs*12,total=0;
+    LEAKS.forEach(function(l){
+      var missing=!state[l.id];
+      var loss=missing?annual*l.f:0;
+      total+=loss;
+      var row=document.getElementById("lb-"+l.id);
+      row.classList.toggle("won",!missing);
+      row.querySelector("b").style.width=(missing?Math.min(100,l.f*260):100)+"%";
+      row.querySelector("span:last-child").textContent=missing?money(loss):"COVERED";
+    });
+    var el=document.getElementById("leaktotal"),from=lastTotal;lastTotal=total;
+    if(reduced){el.textContent=money(total);return;}
+    var t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/700,1);p=1-Math.pow(1-p,3);
+      el.textContent=money(from+(total-from)*p);
+      if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  [rJob,rJobs].forEach(function(r){r.addEventListener("input",calc);});
+  calc();
+
+  /* sticky */
+  var sticky=document.getElementById("sticky"),hero=document.querySelector(".hero");
+  var sio=new IntersectionObserver(function(es){es.forEach(function(e){sticky.classList.toggle("show",!e.isIntersecting);});},{threshold:0});
+  sio.observe(hero);
+
+  /* form: mailto fallback until GHL webhook wired */
+  document.querySelector("form.gplan").addEventListener("submit",function(e){
+    e.preventDefault();
+    var f=e.target;
+    var msg="Game plan request%0AName: "+encodeURIComponent(f.name.value)+"%0ACompany: "+encodeURIComponent(f.company.value)+"%0APhone: "+encodeURIComponent(f.phone.value)+"%0ACity: "+encodeURIComponent(f.city.value)+"%0AJobs/mo: "+encodeURIComponent(f.jobs.value);
+    window.location.href="sms:+13024959984?&body="+msg;
+  });
+})();
+</script>
+</body>
+</html>
