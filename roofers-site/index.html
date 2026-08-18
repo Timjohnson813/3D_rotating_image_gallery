@@ -47,6 +47,30 @@
   .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--chalk);clip-path:none}
   .btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
 
+
+  /* hero guarantee badge */
+  .herobadge{display:inline-flex;align-items:stretch;margin-top:26px;border:1px solid var(--kraft);background:rgba(21,23,28,.55);backdrop-filter:blur(4px)}
+  .herobadge .hb-k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bitumen);background:var(--kraft);padding:10px 12px;display:flex;align-items:center}
+  .herobadge .hb-v{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:1.05rem;color:#fff;padding:9px 16px;display:flex;align-items:center;letter-spacing:.02em}
+  @media(max-width:600px){.herobadge{flex-direction:column}.herobadge .hb-v{font-size:.95rem;padding:10px 12px}}
+  /* leak card: number first */
+  .talk .tlabel{position:relative;font-size:.72rem;letter-spacing:.16em;font-weight:500;color:#8FB4FF;margin-bottom:10px;display:block}
+  .talk .tstat{position:relative;display:block;font-family:var(--disp);font-weight:900;font-size:clamp(3rem,5vw,4.2rem);line-height:.85;color:var(--torch);margin-bottom:8px;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+  .talk p{font-size:.95rem}
+  /* investment line on packages */
+  .priceline{display:flex;align-items:baseline;gap:10px;margin:6px 0 20px;padding-bottom:14px;border-bottom:2px solid #E4DDCE}
+  .priceline .pl-k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .priceline .pl-v{font-family:var(--disp);font-weight:900;font-size:1.6rem;text-transform:uppercase;color:var(--paper-ink)}
+  .pack.dark .priceline{border-bottom-color:#39322A}
+  .pack.dark .priceline .pl-v{color:var(--kraft)}
+  .pack.dark .priceline .pl-k{color:#9B978F}
+  /* guarantee conditions */
+  .conds{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#2C313B;margin-top:24px}
+  @media(max-width:800px){.conds{grid-template-columns:1fr}}
+  .cond{background:#22262E;padding:20px;display:flex;gap:14px;align-items:flex-start}
+  .cond b{font-family:var(--disp);font-weight:900;font-size:1.8rem;color:var(--chalk);line-height:.9}
+  .cond span{font-size:.92rem;color:#C9C6BF}
+
   /* ===== NAV ===== */
   nav{position:sticky;top:0;z-index:60;background:rgba(21,23,28,.94);backdrop-filter:blur(8px);border-bottom:1px solid #2C313B}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
@@ -310,7 +334,8 @@
       <div class="anno mono">JOB SITE: YOUR TOWN &nbsp;·&nbsp; CREW: OURS &nbsp;·&nbsp; TARGET: YOUR CALENDAR, FULL</div>
     </div>
     <h1>Your phone rings.<br>Your calendar fills.<br><em>Every month.</em></h1>
-    <p class="sub">We install the client machine for roofing companies. Ads, Google, AI answering, reviews, reactivation. All of it run by <b>a dedicated ad team</b>, all of it measured. Top package is guaranteed in writing: <b>30 new clients in 90 days or you do not pay. Money back.</b></p>
+    <p class="sub"><b>Before you pay a dollar, you get the whole plan.</b> A 20 page audit of your business, your area and your competitors, and a 30 day strategy walked through with you on a call. Free.</p>
+    <div class="herobadge reveal"><span class="hb-k">Guaranteed in writing</span><span class="hb-v">30 new clients in 90 days or you do not pay</span></div>
     <div class="heroctas">
       <a class="tag-cta" href="#gameplan">Get your free 30 day game plan</a>
       <a class="btn line" href="#leaks">See what you are losing</a>
@@ -334,24 +359,24 @@
         <div class="ticket reveal">
           <div class="tno">STEP 01 · THE AUDIT</div>
           <h3>We audit your whole market</h3>
-          <p>Your business, your area, and your competitors. What they run, what they rank for, where their jobs come from. It becomes a <span class="mark">20 page audit</span> that shows every good side and every bad side of your operation. Where you are. Where the jobs are leaking.</p>
+          <p>You, your area, your competitors. It becomes a <span class="mark">20 page audit</span>: every good side, every bad side, and exactly where the jobs leak out.</p>
         </div>
         <div class="ticket reveal">
           <div class="tno">STEP 02 · THE CALL</div>
           <h3>We hand you the 30 day game plan. Free.</h3>
-          <p>Fill the form, get on a call. I walk you through the audit and a <span class="mark">30 day strategy built to double your client flow</span>. It is yours either way. Take it and run it yourself if you want to. That is why owners talk to us.</p>
+          <p>I walk you through a <span class="mark">30 day strategy built to double your client flow</span>. Yours either way. Run it yourself if you want.</p>
         </div>
         <div class="ticket reveal">
           <div class="tno">STEP 03 · THE DECISION</div>
           <h3>Then you decide</h3>
-          <p>If you want it done for you, we install the machine and run it. If not, you still walk away knowing exactly what to fix first. <span class="mark">No pressure on the call. The plan does the selling.</span></p>
+          <p>Want it done for you, we install it. If not, you still know what to fix first. <span class="mark">The plan does the selling.</span></p>
         </div>
       </div>
       <div class="buytime reveal">
         <h3>You are not buying services. <em>You are buying your time.</em></h3>
-        <p>Honestly, you can do everything we do on your own. The ads, the SEO, the automations, the follow up. Every piece can be learned.</p>
+        <p>You can do all of this yourself. Every piece can be learned.</p>
         <p>The question is different. Do you have <span class="circle-anno">several years<svg viewBox="0 0 120 44" preserveAspectRatio="none"><ellipse cx="60" cy="22" rx="56" ry="18" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="240" stroke-dashoffset="0" opacity=".85"/></svg></span> to reach expert level while your competitors are taking jobs off your table every week?</p>
-        <p>We spent the years and the $300k of ad budget already. You get the result without the tuition.</p>
+        <p>We already spent the years and the ad budget. You skip the tuition.</p>
       </div>
     </div>
   </div>
@@ -363,15 +388,15 @@
     <div class="kicker"><div class="chalkline snap-on-view"></div><span>Look at your business. You already know.</span></div>
     <h2>You have these. Every one<br>is costing you jobs.</h2>
     <div class="talkgrid">
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-missed-call.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 01 · SPEED</span><p>Nobody calls your leads back in the first minute. No automation doing it either. <b>That is up to 70% of your inquiries gone.</b></p></div>
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-quiet-office.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 02 · OLD CUSTOMERS</span><p>You never work your past customer list. No review asks, no referral asks, no check ins. <b>Another 50 to 80% left on the table.</b></p></div>
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/storm.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 03 · STORM ONLY</span><p>Your calendar only fills after a storm. Repairs, not replacements. <b>Feast and famine is not a business model.</b></p></div>
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/ad-team.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 04 · TRACKING</span><p>No pixel on your site. No LSA. No Google Ads, or ads running blind with nobody watching them daily. <b>Every dollar untracked is a dollar leaking.</b></p></div>
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/craft-hands.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 05 · FREE ESTIMATES</span><p>You drive out to every tire kicker for free. No returnable deposit before the inspection, no CRM tracking who is real. <b>Days of your life, gone.</b></p></div>
-      <div class="talk reveal"><div class="timg" style="background-image:url('assets/review.jpg')"></div><div class="tshade"></div><span class="mono">LEAK 06 · PRESENCE</span><p>Under 100 reviews. Under 4.8 stars. No professional video, dead social pages. <b>Homeowners check all of it before they call.</b></p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-missed-call.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 01 · SPEED</span><b class="tstat">24%</b><p>of your year walks out because nobody calls back in the first minute.</p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/pain-quiet-office.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 02 · OLD CUSTOMERS</span><b class="tstat">16%</b><p>sits in the customer list you never work again.</p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/storm.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 03 · STORM ONLY</span><b class="tstat">7%</b><p>lost waiting on weather instead of booking replacements.</p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/ad-team.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 04 · TRACKING</span><b class="tstat">24%</b><p>burns in ads nobody watches, with no pixel and no LSA.</p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/craft-hands.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 05 · FREE ESTIMATES</span><b class="tstat">11%</b><p>drives away in free quotes for people who were never buying.</p></div>
+      <div class="talk reveal"><div class="timg" style="background-image:url('assets/review.jpg')"></div><div class="tshade"></div><span class="mono tlabel">LEAK 06 · PRESENCE</span><b class="tstat">17%</b><p>never calls you, because your reviews and video are thin.</p></div>
     </div>
     <div class="talkfoot reveal">
-      <p>We are not asking if you need help. We are telling you what you have. Every leak above has a machine that fixes it, and we install all of them.</p>
+      <p>Every leak above has a machine that fixes it. We install all of them.</p>
       <a class="btn" href="#leaks">Count your leaks below</a>
     </div>
   </div>
@@ -524,17 +549,16 @@
 <!-- ================= PACKAGES ================= -->
 <section class="sec paper" id="packages">
   <div class="wrap">
-    <div class="kicker"><div class="chalkline snap-on-view"></div><span>Pricing, in the open</span></div>
+    <div class="kicker"><div class="chalkline snap-on-view"></div><span>The three ways in</span></div>
     <h2>Three ways in.</h2>
-    <p style="margin-top:14px;color:#3E3B34">Almost nobody in this industry publishes prices. We do. One roofer per area. One roof job is $9,000 plus, so land one job a month and the system pays for itself.</p>
+    <p style="margin-top:14px;color:#3E3B34">One roofer per area. What it costs comes on the call, once you have seen your audit and we both know which one you actually need.</p>
     <div class="packs">
 
       <div class="pack reveal">
         <div class="sla">Package 01 · Live in 14 days</div>
         <h3>Minimum Package</h3>
         <div class="for">Built or fixed for you. Stops the bleeding: no more missed calls, no more invisible Google profile.</div>
-        <div class="price num">$1,500 <span>SETUP, ONE TIME</span></div>
-        <div class="permo num">then $997 a month</div>
+        <div class="priceline"><span class="pl-k">Investment</span><span class="pl-v">On the call</span></div>
         <ul>
           <li>Website that turns clicks into calls, built new or rebuilt</li>
           <li>AI receptionist answering 24/7, nights and weekends</li>
@@ -551,8 +575,7 @@
         <div class="sla">Package 02 · Most of the way · Live in 60 days</div>
         <h3>Busy Every Month</h3>
         <div class="for">Everything in 01, plus the machines that go get the work instead of waiting for it.</div>
-        <div class="price num">$3,000 <span>SETUP, ONE TIME</span></div>
-        <div class="permo num">then $1,997 a month</div>
+        <div class="priceline"><span class="pl-k">Investment</span><span class="pl-v">On the call</span></div>
         <ul>
           <li class="plus">Everything in 01, plus</li>
           <li>Google + Meta ads, run daily by the ads desk</li>
@@ -569,9 +592,8 @@
         <div class="sla">Package 03 · Guaranteed · 90 days</div>
         <h3>Leads, Guaranteed</h3>
         <div class="for">Everything in 01 + 02, plus the full weight of our network behind you.</div>
-        <div class="price num">$6,000 <span>SETUP, ONE TIME</span></div>
-        <div class="permo num">then $3,997 a month</div>
-        <div class="gbox"><b>The guarantee:</b> 30 new clients in 90 days or you do not pay. Money back, and you keep everything we built. Terms in plain English, in writing, before you pay a dollar.</div>
+        <div class="priceline"><span class="pl-k">Investment</span><span class="pl-v">On the call</span></div>
+        <div class="gbox"><b>The guarantee:</b> 30 new clients in 90 days or you do not pay. Money back, and you keep everything we built.</div>
         <ul>
           <li>Only in 03: 10 premium ad sets, rotated so ads never go stale</li>
           <li>Only in 03: social media done for you, up to 5 channels</li>
@@ -591,7 +613,13 @@
 <section class="gband">
   <div class="wrap reveal">
     <h2><em>30 new clients in 90 days</em> or you do not pay.</h2>
-    <p>Money back. You keep the website, the AI line, the reviews and every lead. We can only write that because the machine already runs on real roofing companies. Simple conditions, three lines, in the agreement you read before paying.</p>
+    <p>Money back. You keep the website, the AI line, the reviews and every lead. Three conditions, that is the whole list:</p>
+    <div class="conds">
+      <div class="cond"><b>01</b><span>Leads answered within 3 hours. Or let the AI do it for you.</span></div>
+      <div class="cond"><b>02</b><span>The agreed ad budget stays live the full 90 days.</span></div>
+      <div class="cond"><b>03</b><span>Approvals and materials come back within 7 days.</span></div>
+    </div>
+    <p style="margin-top:18px;font-size:.9rem;color:#9B978F">Ad spend goes to Google and Meta from your own account, never to us. You own the site, the ad account and every lead, forever.</p>
   </div>
 </section>
 
